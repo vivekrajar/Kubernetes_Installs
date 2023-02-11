@@ -33,7 +33,8 @@ install_ubuntu() {
        else
           echo "docker-ce is successfully installed"
           yum install -y wget
-          sudo wget https://raw.githubusercontent.com/lerndevops/labs/master/kubernetes/0-install/daemon.json -P /etc/docker
+          #sudo wget https://raw.githubusercontent.com/lerndevops/labs/master/kubernetes/0-install/daemon.json -P /etc/docker
+          sudo wget https://raw.githubusercontent.com/vivekrajar/labs/master/kubernetes/0-install/daemon.json -P /etc/docker
           sudo service docker restart ; clear
        fi
     else
@@ -64,7 +65,8 @@ install_centos() {
        else
           echo "docker-ce is successfully installed"
           yum install -y wget
-          sudo wget https://raw.githubusercontent.com/lerndevops/labs/master/kubernetes/0-install/daemon.json -P /etc/docker
+          #sudo wget https://raw.githubusercontent.com/lerndevops/labs/master/kubernetes/0-install/daemon.json -P /etc/docker
+          sudo wget https://raw.githubusercontent.com/vivekrajar/labs/master/kubernetes/0-install/daemon.json -P /etc/docker
           sudo service docker restart ; clear
        fi
     else

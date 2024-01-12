@@ -9,7 +9,7 @@ install_ubuntu() {
    sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
    echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
    sudo apt-get update
-   sudo apt-get install -y kubelet=1.23.10-00 kubeadm=1.23.10-00 kubectl=1.23.10-00
+   sudo apt-get install -y kubelet=1.29.00-00 kubeadm=1.29.00-00 kubectl=1.29.00-00
 
    if [ $? -eq 0 ];then
       echo "kubelet, kubeadm & kubectl are successfully installed"

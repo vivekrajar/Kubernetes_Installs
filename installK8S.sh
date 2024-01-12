@@ -3,6 +3,7 @@
 install_ubuntu() {
 
    #### Install Kubernetes latest components
+   sudo rm -rf /etc/apt/sources.list.d/kubernetes.list
    sudo apt-get update
    sudo apt-get install -y apt-transport-https ca-certificates curl gpg
    echo "starting the installation of k8s components (kubeadm,kubelet,kubectl) ...."

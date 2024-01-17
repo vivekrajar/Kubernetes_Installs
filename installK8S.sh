@@ -9,6 +9,8 @@ install_ubuntu() {
    echo "starting the installation of k8s components (kubeadm,kubelet,kubectl) ...."
    sudo mkdir /etc/apt/keyrings/
    curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+   ## Below lines with different release versions added to "/etc/apt/sources.list.d/kubernetes.list" will be used by "apt-get update" to pull all those k8s release versions
+   ## For Eg: if you include only the line with 1.29, only that release version will be available to you locally
    echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
    echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
    echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.27/deb/ /" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list

@@ -8,10 +8,11 @@ install_ubuntu() {
    sudo apt-get install -y apt-transport-https ca-certificates curl gpg
    echo "starting the installation of k8s components (kubeadm,kubelet,kubectl) ...."
    sudo mkdir /etc/apt/keyrings/
-   curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+   curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
    ## Below lines with different release versions added to "/etc/apt/sources.list.d/kubernetes.list" will be used by "apt-get update" to pull all those k8s release versions
    ## For Eg: if you include only the line with 1.29, only that release version will be available to you locally
    ## also make sure there no duplicate lines, hence, we delete the file at the start
+   echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
    echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
    echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
    echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.27/deb/ /" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
@@ -37,7 +38,8 @@ cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
 name=Kubernetes
 enabled=1
 gpgcheck=1
-gpgkey=https://pkgs.k8s.io/core:/stable:/v1.29/rpm/repodata/repomd.xml.key
+gpgkey=https://pkgs.k8s.io/core:/stable:/v1.30/rpm/repodata/repomd.xml.key
+baseurl=https://pkgs.k8s.io/core:/stable:/v1.30/rpm/
 baseurl=https://pkgs.k8s.io/core:/stable:/v1.29/rpm/
 baseurl=https://pkgs.k8s.io/core:/stable:/v1.28/rpm/
 baseurl=https://pkgs.k8s.io/core:/stable:/v1.27/rpm/
@@ -61,7 +63,8 @@ cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
 name=Kubernetes
 enabled=1
 gpgcheck=1
-gpgkey=https://pkgs.k8s.io/core:/stable:/v1.29/rpm/repodata/repomd.xml.key
+gpgkey=https://pkgs.k8s.io/core:/stable:/v1.30/rpm/repodata/repomd.xml.key
+baseurl=https://pkgs.k8s.io/core:/stable:/v1.30/rpm/
 baseurl=https://pkgs.k8s.io/core:/stable:/v1.29/rpm/
 baseurl=https://pkgs.k8s.io/core:/stable:/v1.28/rpm/
 baseurl=https://pkgs.k8s.io/core:/stable:/v1.27/rpm/
